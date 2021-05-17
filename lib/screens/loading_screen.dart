@@ -14,7 +14,14 @@ class LoadingScreen extends StatefulWidget {
 class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
+  void initState() {
+    super.initState();
+    print('App starts');
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print('App is building now');
     return Scaffold(
       body: Center(
         child: RaisedButton(
@@ -28,5 +35,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    print('App deactivate');
   }
 }
