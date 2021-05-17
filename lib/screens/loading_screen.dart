@@ -26,6 +26,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
     print(location.latitude);
   }
 
+  void getData(){
+
+  }
+
   @override
   Widget build(BuildContext context) {
     print('App is building now');
