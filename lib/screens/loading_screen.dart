@@ -19,27 +19,22 @@ class _LoadingScreenState extends State<LoadingScreen> {
     print('App starts');
   }
 
+  void getLocation() async{
+    Location location=Location();
+    await location.getCurrentPosition();
+    print(location.longitude);
+    print(location.latitude);
+  }
+
   @override
   Widget build(BuildContext context) {
     print('App is building now');
-    return Scaffold(
-      body: Center(
-        child: RaisedButton(
-          onPressed: () async {
-            Location location=Location();
-            await location.getCurrentPosition();
-            print(location.longitude);
-            print(location.latitude);
-          },
-          child: Text('Get Location'),
-        ),
-      ),
-    );
+    return Scaffold();
   }
 
   @override
   void deactivate() {
     super.deactivate();
-    print('App deactivate');
+    print('App deactivate '); //when one screen close(Navigator.pop(context))
   }
 }
