@@ -1,10 +1,9 @@
 import 'package:clima_weather_app/services/location.dart';
 import 'package:flutter/material.dart';
-import 'package:clima_weather_app/services/location.dart';
+import 'package:http/http.dart';
 import 'package:http/io_client.dart';
 
 class LoadingScreen extends StatefulWidget {
-
 
 
   @override
@@ -26,8 +25,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
     print(location.latitude);
   }
 
-  void getData(){
-
+  void getData() async {
+    Response response= await get('http://api.openweathermap.org/data/2.5/weather?lat=27.8941111&lon=78.101502&appid=2e865217e441d180a435b0901bc84401');
   }
 
   @override
