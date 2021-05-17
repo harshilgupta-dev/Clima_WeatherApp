@@ -1,6 +1,6 @@
 import 'package:clima_weather_app/services/location.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
 
 class LoadingScreen extends StatefulWidget {
