@@ -30,7 +30,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
     http.Response response= await http.get(Uri.parse('https://api.openweathermap.org/data/2.5/weather?lat=27.8941111&lon=78.101502&appid=2e865217e441d180a435b0901bc84401'));
     print(response.body);
-    print(response.headers);
+    print(response.headers['date']);
   }
 
   @override
