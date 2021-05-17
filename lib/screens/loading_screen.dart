@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
 class LoadingScreen extends StatefulWidget {
+
+  void getLocation(){
+
+  }
+
   @override
   _LoadingScreenState createState() => _LoadingScreenState();
 }
