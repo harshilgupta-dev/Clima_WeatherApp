@@ -12,20 +12,13 @@ class LoadingScreen extends StatefulWidget {
 
 class _LoadingScreenState extends State<LoadingScreen> {
 
-  Location location=Location();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: RaisedButton(
           onPressed: () {
-            try {
-              location.getCurrentPosition();
-            }
-            catch(e){
-              print(e);
-            }
+            Location location=Location();
           },
           child: Text('Get Location'),
         ),
