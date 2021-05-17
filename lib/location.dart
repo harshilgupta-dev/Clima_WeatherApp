@@ -6,8 +6,16 @@ class Location{
 
 
 
-  void getCurrentPosition() async{
-    Position position= await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
+  Future<void> getCurrentPosition() async{
+    try{
+      Position position= await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
+
+      latitude=position.latitude;
+      longitude=position.longitude;
+    }
+    catch(e){
+      print(e);
+    }
   }
 
 }
