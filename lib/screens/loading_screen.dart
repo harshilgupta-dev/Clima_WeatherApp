@@ -15,23 +15,28 @@ class LoadingScreen extends StatefulWidget {
 
 class _LoadingScreenState extends State<LoadingScreen> {
 
+  double latitude;
+  double longitude;
+
   @override
   void initState() {
     super.initState();
     print('App starts');
-    getLocation();
+
   }
 
   void getLocation() async{
     Location location=Location();
     await location.getCurrentPosition();
-    print(location.longitude);
-    print(location.latitude);
+    latitude=location.latitude;
+    longitude=location.longitude;
+
+    getData();
   }
 
   void getData() async {
 
-    http.Response response= await http.get(Uri.parse('https://api.openweathermap.org/data/2.5/weather?lat=27.8941111&lon=78.101502&appid=$apiKey'));
+    http.Response response= await http.get(Uri.parse('https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey'));
 
     if(response.statusCode==200){
       String data=response.body;
@@ -54,7 +59,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     print('App is building now');
-    getData();
+    getLocation();
+
     return Scaffold();
   }
 
