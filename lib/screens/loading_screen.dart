@@ -7,14 +7,11 @@ import 'dart:convert';
 const apiKey = '2e865217e441d180a435b0901bc84401';
 
 class LoadingScreen extends StatefulWidget {
-
-
   @override
   _LoadingScreenState createState() => _LoadingScreenState();
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-
   double latitude;
   double longitude;
 
@@ -22,38 +19,35 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
     print('App starts');
-
   }
 
-  void getLocation() async{
-    Location location=Location();
+  void getLocation() async {
+    Location location = Location();
     await location.getCurrentPosition();
-    latitude=location.latitude;
-    longitude=location.longitude;
+    latitude = location.latitude;
+    longitude = location.longitude;
 
     getData();
   }
 
   void getData() async {
+    http.Response response = await http.get(Uri.parse(
+        'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey'));
 
-    http.Response response= await http.get(Uri.parse('https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey'));
+    if (response.statusCode == 200) {
+      String data = response.body;
 
-    if(response.statusCode==200){
-      String data=response.body;
-
-      int condition=jsonDecode(data)['weather'][0]['id'];
+      int condition = jsonDecode(data)['weather'][0]['id'];
       print(condition);
 
-      double temperature=jsonDecode(data)['main']['temp'];
+      double temperature = jsonDecode(data)['main']['temp'];
       print(temperature);
 
       String cityName = jsonDecode(data)['name'];
       print(cityName);
-
-    }else {
+    } else {
       print("Can't get data from link plz re-check it");
     }
-
   }
 
   @override
