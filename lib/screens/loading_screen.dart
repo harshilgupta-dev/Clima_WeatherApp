@@ -37,6 +37,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
       var id=jsonDecode(data)['weather'][0]['id'];
       print(id);
 
+      var temperature=jsonDecode(data)['main']['temp'];
+      print(temperature);
+
     }else {
       print("Can't get data from link plz re-check it");
     }
