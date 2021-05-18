@@ -12,16 +12,8 @@ class NetworkHelper {
     http.Response response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
-      String data = response.body;
-
-      int condition = jsonDecode(data)['weather'][0]['id'];
-      print(condition);
-
-      double temperature = jsonDecode(data)['main']['temp'];
-      print(temperature);
-
-      String cityName = jsonDecode(data)['name'];
-      print(cityName);
+      String data= response.body;
+      return jsonDecode(data);
     } else {
       print("Can't get data from link plz re-check it");
     }
