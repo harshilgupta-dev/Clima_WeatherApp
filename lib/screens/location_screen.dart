@@ -12,6 +12,10 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   @override
   Widget build(BuildContext context) {
+    /*We can not directly access the LocationScreen field in  _LocationScreenState
+      for that we that we have to use widget.<fieldName>
+     */
+    print(widget.weatherData);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
