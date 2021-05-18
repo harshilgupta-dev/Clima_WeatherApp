@@ -32,6 +32,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     print(response.body);
     print(response.persistentConnection );
     print(response.request);
+    print(response.statusCode);
   }
 
   @override
