@@ -39,25 +39,7 @@ class _CityScreenState extends State<CityScreen> {
                   style: TextStyle(
                       color: Colors.black
                   ),
-                  decoration: InputDecoration(
-                    hintText: 'Enter city name',
-                    hintStyle: TextStyle(
-                      color: Colors.grey,
-                      letterSpacing: .8,
-
-                    ),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(10.0)
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    icon: Icon(Icons.location_city,
-                      color: Colors.white,
-                      size: 30.0,
-                    )
-
-                  ),
+                  decoration:
                 ),
               ),
               FlatButton(
