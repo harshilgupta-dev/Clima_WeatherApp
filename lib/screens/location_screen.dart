@@ -10,12 +10,29 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
-  @override
-  Widget build(BuildContext context) {
-    /*We can not directly access the LocationScreen field in  _LocationScreenState
+
+  double temperature;
+  int condition;
+  String cityName;
+
+  /*We can not directly access the LocationScreen field in  _LocationScreenState
       for that we that we have to use widget.<fieldName>
      */
+  @override
+  void initState() {
+    super.initState();
     print(widget.weatherData);
+  }
+
+  void updateUI(dynamic weatherData){
+    temperature = weatherData['main']['temp'];
+    condition = weatherData['weather'][0]['id'];
+    cityName=weatherData['name'];
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
