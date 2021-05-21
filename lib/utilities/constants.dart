@@ -31,4 +31,5 @@ const kTextFieldInputDecoration = InputDecoration(
       Icons.location_city,
       color: Colors.white,
       size: 30.0,
-    ));
+    ),
+);
