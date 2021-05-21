@@ -14,7 +14,7 @@ class _LocationScreenState extends State<LocationScreen> {
   double temperature;
   String weatherIcon;
   String cityName;
-
+  String meassage;
   /*We can not directly access the LocationScreen field in  _LocationScreenState
       for that we that we have to use widget.<fieldName>
      */
@@ -26,10 +26,17 @@ class _LocationScreenState extends State<LocationScreen> {
 
   void updateUI(dynamic weatherData) {
     setState(() {
+      if(weatherData==null){
+        temperature=0;
+        weatherIcon='Error';
+        meassage='';
+
+      }
       temperature = weatherData['main']['temp'];
       var condition = weatherData['weather'][0]['id'];
       weatherIcon = weather.getWeatherIcon(condition);
       cityName = weatherData['name'];
+      meassage=weather.getMessage(temperature.toInt());
     });
   }
 
@@ -55,7 +62,10 @@ class _LocationScreenState extends State<LocationScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   FlatButton(
-                    onPressed: () {},
+                    onPressed: () async{
+                      var weatherData= await weather.getLocationData();
+                      updateUI(weatherData);
+                    },
                     child: Icon(
                       Icons.near_me,
                       size: 50.0,
@@ -88,7 +98,7 @@ class _LocationScreenState extends State<LocationScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 15.0),
                 child: Text(
-                  "${weather.getMessage(temperature.toInt())} in $cityName",
+                  "${meassage} in $cityName",
                   textAlign: TextAlign.right,
                   style: kMessageTextStyle,
                 ),
